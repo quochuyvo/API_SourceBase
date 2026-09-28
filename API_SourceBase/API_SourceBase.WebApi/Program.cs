@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // 2. Cấu hình DbContext (mặc định dùng In-Memory Database để chạy thử nghiệm độc lập)
-builder.Services.AddDbContext<DemoDbContext>(options =>
+builder.Services.AddDbContext<MainDbContext>(options =>
 {
     options.UseInMemoryDatabase("API_SourceBase_Db");
     // options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -48,7 +48,7 @@ var app = builder.Build();
 // Tự động seed dữ liệu mẫu vào bộ nhớ khi khởi chạy
 using (var scope = app.Services.CreateScope())
 {
-    var context = scope.ServiceProvider.GetRequiredService<DemoDbContext>();
+    var context = scope.ServiceProvider.GetRequiredService<MainDbContext>();
     context.SeedData();
 }
 
