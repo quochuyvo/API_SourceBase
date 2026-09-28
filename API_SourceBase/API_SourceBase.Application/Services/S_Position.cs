@@ -24,10 +24,10 @@ namespace API_SourceBase.Application.Services
 
     public class S_Position : IS_Position
     {
-        private readonly DemoDbContext _context;
+        private readonly MainDbContext _context;
         private readonly IMapper _mapper;
 
-        public S_Position(DemoDbContext context, IMapper mapper)
+        public S_Position(MainDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
